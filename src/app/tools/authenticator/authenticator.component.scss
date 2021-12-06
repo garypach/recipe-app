@@ -1,0 +1,40 @@
+
+    #authenticator-content{
+        background: transparent;
+        width: 100%;
+        max-width: 335px;
+        height: 379px;
+        background-color: #ffffff;
+        border: 1px solid lightgray;
+        padding: 1.5em;
+
+        button{
+            margin: 10px 0;
+        }
+    }
+
+    #authenticator-create-content{
+        background: transparent;
+        width: 100%;
+        max-width: 335px;
+        background-color: #ffffff;
+        border: 1px solid lightgray;
+        padding: 1.5em;
+        padding: 2em 0;
+
+        button{
+            margin: 10px 0;
+        }
+    }
+
+#authenticator input{
+    background-color: #fafafa;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    font-size: 11px;
+    width: 85%;
+    padding: 10px 8px;
+}
+
