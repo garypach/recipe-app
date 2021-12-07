@@ -1,3 +1,12 @@
+<div>
+    <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items" >
+        Hello, {{userDocument?.publicName}}
+</div>
+<div *ngIf="loggedIn()"
+      (click)="onLogoutClick()" class="nav-bar-items" >
+       Logout
+</div>
+</div>
 <div class="container mt-5">
     <div class="row">
         <div class="col ">
@@ -21,7 +30,6 @@
                 </div>
                 <div class="container">
                     <app-authenticator></app-authenticator>
-    
                 </div>
             </div>
           
@@ -29,6 +37,6 @@
 
         </div>
     </div>
-    
-
 </div>
+
+<app-profile [show]="loggedIn() && !userHasProfile"></app-profile>

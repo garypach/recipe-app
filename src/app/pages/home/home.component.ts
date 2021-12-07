@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
+import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  auth = new FirebaseTSAuth();
+  firestore = new FirebaseTSFirestore();
+  userHasProfile = true;
+  userDocument?: UserDocument;
+
+  constructor(){
+    this.auth.listenToSignInStateChanges(
+      user => {
+       this.auth.checkSignInState({
+         whenSignedIn:user=>{
+           this.getUserProfile()
+         },
+         whenSignedOut:user=>{
+
+        },
+        whenChanged:user=>{
+
+        },
+       })
+      }
+    )
+  }
 
   ngOnInit(): void {
   }
+  getUserProfile(){
+    this.firestore.listenToDocument(
+    {
+    name: "Getting Document",
+    path: [ "Users", this.auth.getAuth().currentUser!.uid ],
+    onUpdate: (result) => {
+      this.userDocument = <UserDocument>result.data();
+      this.userHasProfile = result.exists; 
+ }
+    }
+    );}
+
+  onLogoutClick(){
+    return this.auth.signOut();
+  }
+  loggedIn(){
+    return this.auth.isSignedIn();
+  }
 
 }
+
+export interface UserDocument {
+  publicName: string;
+  description: string;}

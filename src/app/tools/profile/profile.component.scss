@@ -1,0 +1,27 @@
+#profile{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    transition: .5s all ease-in-out;
+    overflow: hidden;
+    background-color: bisque;
+
+    input, textarea{
+        width:100%;
+        resize: none;
+        padding: 1em;
+        border-radius: 1em;
+        outline: none;
+        margin-bottom: 1em;
+    }
+}
+
+.active{
+    width: 100%;
+}
+
+.idle{
+    width: 0% ;
+}

@@ -7,9 +7,9 @@
           
           //if login state is true
         <div *ngIf="isLoggedinState() " class="container d-flex justify-content-center align-items-center flex-column ">
-            <input placeholder="Email"/>
-            <input placeholder="Password" type="password"/>
-            <button class="fs-5"mat-raised-button isRoundButton=true color="warn">Login</button>
+            <input #loginEmail placeholder="Email"/>
+            <input #loginPassword placeholder="Password" type="password"/>
+            <button (click)="onLoginClick(loginEmail, loginPassword)"class="fs-5"mat-raised-button isRoundButton=true color="warn">Login</button>
         </div>
 
         //if register state is true

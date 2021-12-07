@@ -9,12 +9,14 @@ import { environment } from 'src/environments/environment';
 import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card'
 import {MatBottomSheet, MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import { AuthenticatorComponent } from './tools/authenticator/authenticator.component'
+import { AuthenticatorComponent } from './tools/authenticator/authenticator.component';
+import { ProfileComponent } from './tools/profile/profile.component'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AuthenticatorComponent
+    AuthenticatorComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

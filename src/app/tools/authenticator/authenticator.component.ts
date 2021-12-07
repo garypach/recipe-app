@@ -6,13 +6,18 @@ import {FirebaseTSAuth} from 'firebasets/firebasetsAuth/firebaseTSAuth'
   styleUrls: ['./authenticator.component.scss']
 })
 export class AuthenticatorComponent implements OnInit {
-state = AuthenticatorCompState.LOGIN
+state = AuthenticatorCompState.LOGIN;
 firebasetsAuth:FirebaseTSAuth;
+
   constructor() {
     this.firebasetsAuth = new FirebaseTSAuth();
+    console.log(typeof(this.firebasetsAuth))
+
    }
 
+
   ngOnInit(): void {
+
   }
 
   onResetClick(resetEmail:HTMLInputElement,){
@@ -30,6 +35,7 @@ firebasetsAuth:FirebaseTSAuth;
       }
     )
   }
+  
 
 
   onLoginClick(
