@@ -11,12 +11,23 @@ import {MatCardModule} from '@angular/material/card'
 import {MatBottomSheet, MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { AuthenticatorComponent } from './tools/authenticator/authenticator.component';
 import { ProfileComponent } from './tools/profile/profile.component'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatIconModule} from '@angular/material/icon';
+import { PostFeedComponent } from './pages/post-feed/post-feed.component';
+import { CreatePostComponent } from './tools/create-post/create-post.component';
+import { PostsComponent } from './tools/posts/posts.component';
+import { HeaderComponent } from './shared/header/header.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthenticatorComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostFeedComponent,
+    CreatePostComponent,
+    PostsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +36,8 @@ import { ProfileComponent } from './tools/profile/profile.component'
     MatButtonModule,
     MatCardModule,
     MatBottomSheetModule,
+    MatDialogModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

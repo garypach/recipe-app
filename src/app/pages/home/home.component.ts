@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   userHasProfile = true;
   userDocument?: UserDocument;
 
-  constructor(){
+  constructor(private router:Router){
     this.auth.listenToSignInStateChanges(
       user => {
        this.auth.checkSignInState({
@@ -42,6 +43,9 @@ export class HomeComponent implements OnInit {
     onUpdate: (result) => {
       this.userDocument = <UserDocument>result.data();
       this.userHasProfile = result.exists; 
+      if(this.userHasProfile){
+        this.router.navigate(["postfeed"])
+      }
  }
     }
     );}

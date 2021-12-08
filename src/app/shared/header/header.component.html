@@ -1,0 +1,11 @@
+<div class="container d-flex" *ngIf="loggedIn()">
+    <div>
+        <a href="/" class="align-items-center justify-content-center text-black text-decoration-none">
+            <span class="fs-4 p-4 mt-5 fw-bold">Foodie</span>
+          </a>
+    </div>
+    <div *ngIf="loggedIn()"
+          (click)="onLogoutClick()" class="nav-bar-items" >
+           Logout
+    </div>    
+</div>

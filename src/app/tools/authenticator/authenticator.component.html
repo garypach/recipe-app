@@ -1,8 +1,8 @@
-<div id="authenticator" class="container">
+<div id="authenticator" class="container-sm">
     
-    <mat-card id="authenticator-content" class="d-flex justify-content-center align-items-center flex-column container pb-5">
+    <mat-card id="authenticator-content" class="d-flex justify-content-center align-items-center flex-column container-sm pb-5">
         <a href="/" class="d-flex align-items-center justify-content-center text-black text-decoration-none">
-            <span class="fs-4 p-4 mt-5 fw-bold">Recipe</span>
+            <span class="fs-4 p-4 mt-5 fw-bold">Foodie</span>
           </a>
           
           //if login state is true
@@ -30,19 +30,19 @@
         //if reset state is true
         <div *ngIf="isForgotPasswordState()" class="container d-flex justify-content-center align-items-center flex-column ">
             <input placeholder="Email"/>
-            <button class="fs-5"mat-raised-button isRoundButton=true color="warn">Reset</button>
+            <button class="fs-5 mt-3"mat-raised-button isRoundButton=true color="warn">Reset</button>
         </div>
 
         //change state of forms
-        <mat-card-actions align="end" class="container d-flex justify-content-center align-items-center flex-column pb-5">
-            <button  (click)="loginClick()"  class="fs-6" mat-flat-button isRoundButton=true >Login</button>
-            <button  (click)="forgotPasswordClick()" class="fs-6"mat-flat-button isRoundButton=true >Forgot Password</button>
+        <mat-card-actions align="end" class="container text-dark d-flex justify-content-center align-items-center flex-column pb-5">
+            <p  (click)="loginClick()"  class="fs-6 mb-4" mat-flat-button isRoundButton=true >Login</p>
+            <p (click)="forgotPasswordClick()" class="fs-6"mat-flat-button isRoundButton=true >Forgot Password</p>
         </mat-card-actions>
     </mat-card>
 
-    <mat-card id="authenticator-create-content" class="d-flex justify-content-center align-items-center flex-column container">
+    <mat-card id="authenticator-create-content" class="d-flex justify-content-center align-items-center flex-column container-sm">
         <div  class="container d-flex justify-content-center align-items-center flex-column ">
-            <button (click)="createAccountClick()" class="fs-5" mat-flat-button isRoundButton=true >Create Account</button>
+            <p (click)="createAccountClick()" class="fs-5 text-dark" >Create Account</p>
         </div>
     </mat-card>
 </div>

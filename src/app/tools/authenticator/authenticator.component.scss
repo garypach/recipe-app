@@ -3,13 +3,16 @@
         background: transparent;
         width: 100%;
         max-width: 335px;
-        height: 379px;
+        height: 450px;
         background-color: #ffffff;
         border: 1px solid lightgray;
         padding: 1.5em;
 
         button{
             margin: 10px 0;
+        }
+        p{
+            cursor: pointer;
         }
     }
 
@@ -25,6 +28,10 @@
         button{
             margin: 10px 0;
         }
+        p{
+            cursor: pointer;
+        }
+       
     }
 
 #authenticator input{

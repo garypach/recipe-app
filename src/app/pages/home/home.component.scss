@@ -1,13 +1,21 @@
 .recipe-image{
-height: 500px;
+height: 560px !important;
 width: 100%;
 position: relative;
+
+& img{
+  width: 100%;
+  height: 560px !important;
+}
 
 & .home-load-text{
     position: absolute;
     animation: 1s ease-out 0s 1 slideInFromLeft;
     color: white;
     font-size: 3em;
+    z-index: 2;
+    top:50px;
+    left:50px;
 }
 }
 @keyframes slideInFromLeft {
