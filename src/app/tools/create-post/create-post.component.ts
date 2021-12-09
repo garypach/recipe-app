@@ -16,6 +16,10 @@ export class CreatePostComponent implements OnInit {
   auth = new FirebaseTSAuth();
   firestore = new FirebaseTSFirestore();
   storage = new FirebaseTSStorage();
+  userHasProfile = true;
+  userDocument !: UserDocument;
+
+
   constructor(private dialog: MatDialogRef<CreatePostComponent>) { }
   ngOnInit(): void {
   }
@@ -29,8 +33,20 @@ export class CreatePostComponent implements OnInit {
       alert('missing elements')
     }
     }
+    getUserProfile(){
+      this.firestore.listenToDocument(
+      {
+      name: "Getting Document",
+      path: [ "Users", this.auth.getAuth().currentUser!.uid ],
+      onUpdate: (result) => {
+        this.userDocument = <UserDocument>result.data();
+        this.userHasProfile = result.exists; 
+   }
+      }
+      );}
 
 uploadImagePost(comment: string){
+  this.getUserProfile()
   let postId = this.firestore.genDocId();
   this.storage.upload(
   {
@@ -46,6 +62,7 @@ uploadImagePost(comment: string){
   data: {
   comment: comment,
   creatorId: this.auth.getAuth().currentUser!.uid,
+  username: this.userDocument.publicName,
   imageUrl: downloadUrl,
   timestamp: FirebaseTSApp.getFirestoreTimestamp()
   },
@@ -71,3 +88,9 @@ uploadImagePost(comment: string){
     }
     );}
 }
+
+export interface UserDocument {
+  publicName: string;
+  description: string;
+}
+

@@ -1,0 +1,5 @@
+<div>
+    {{userDocument?.publicName}}
+    {{userDocument?.description}}
+</div>
+<app-profile-posts *ngFor="let post of posts" [postData]="post"></app-profile-posts>

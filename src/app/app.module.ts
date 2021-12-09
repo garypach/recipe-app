@@ -16,7 +16,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { PostFeedComponent } from './pages/post-feed/post-feed.component';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { PostsComponent } from './tools/posts/posts.component';
-import { HeaderComponent } from './shared/header/header.component'
+import { HeaderComponent } from './shared/header/header.component';
+import { ProfileFeedComponent } from './pages/profile-feed/profile-feed.component';
+import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { HeaderComponent } from './shared/header/header.component'
     PostFeedComponent,
     CreatePostComponent,
     PostsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileFeedComponent,
+    ProfilePostsComponent
   ],
   imports: [
     BrowserModule,

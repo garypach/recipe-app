@@ -61,4 +61,5 @@ export class HomeComponent implements OnInit {
 
 export interface UserDocument {
   publicName: string;
-  description: string;}
+  description: string;
+}

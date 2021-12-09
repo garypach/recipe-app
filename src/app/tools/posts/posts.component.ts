@@ -7,6 +7,7 @@ import { PostData } from 'src/app/pages/post-feed/post-feed.component';
 })
 export class PostsComponent implements OnInit {
   @Input() postData?: PostData;
+  
   constructor() { }
 
   ngOnInit(): void {

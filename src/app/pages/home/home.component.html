@@ -1,14 +1,3 @@
-<div>
-    <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items" >
-        Hello, {{userDocument?.publicName}}
-</div>
-<div *ngIf="loggedIn()"
-      (click)="onLogoutClick()" class="nav-bar-items" >
-       Logout
-</div>
-</div>
-
-
 <div class="container-lg d-flex flex-column flex-md-row mt-5 justify-content-center align-items-center">
     <div class="me-5">
         <div class="recipe-image container-fluid d-none d-md-block">
