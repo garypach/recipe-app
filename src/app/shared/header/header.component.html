@@ -5,9 +5,9 @@
           </a>
     </div>
     <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items" >
-        Hello, {{userDocument?.publicName}}
+        Hello, {{ getUsername()}}
 </div>
-    <mat-icon (click)=" onProfileIconClick(userDocument?.publicName)">account_circle</mat-icon>
+    <mat-icon (click)=" onProfileIconClick( getUsername())">account_circle</mat-icon>
     
     <div *ngIf="loggedIn()"
           (click)="onLogoutClick()" class="nav-bar-items" >

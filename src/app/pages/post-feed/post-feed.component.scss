@@ -1,3 +1,12 @@
 body{
     background-color: bisque;
 }
+.post-cont{
+    position: relative;
+    max-width: 500px;
+}
+.post-button{
+    position: fixed;
+    bottom:0;
+    right: 30%;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
   auth = new FirebaseTSAuth();
   firestore = new FirebaseTSFirestore();
   userHasProfile = true;
-  userDocument !: UserDocument;
+  private static userDocument: UserDocument;
+
   constructor(private router:Router){
     this.auth.listenToSignInStateChanges(
       user => {
@@ -21,7 +23,7 @@ export class HeaderComponent implements OnInit {
            this.getUserProfile()
          },
          whenSignedOut:user=>{
-
+          HeaderComponent.userDocument  = null;
         },
         whenChanged:user=>{
 
@@ -33,32 +35,48 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getUsername(){
+    try{
+      return HeaderComponent.userDocument.publicName
+    }
+    catch(err){
+      return ''
+    }
+  }
+  public static getUserDocument(){
+    return HeaderComponent.userDocument;
+  }
   getUserProfile(){
     this.firestore.listenToDocument(
     {
     name: "Getting Document",
     path: [ "Users", this.auth.getAuth().currentUser!.uid ],
     onUpdate: (result) => {
-      this.userDocument = <UserDocument>result.data();
+      HeaderComponent.userDocument = <UserDocument>result.data();
       this.userHasProfile = result.exists; 
+      HeaderComponent.userDocument.userId = this.auth.getAuth().currentUser!.uid
+      if(this.userHasProfile){
+        this.router.navigate(["postfeed"])
+      }
  }
     }
     );}
+
   onLogoutClick(){
     this.router.navigate(['/'])
     return this.auth.signOut();
+   
   }
   loggedIn(){
     return this.auth.isSignedIn();
   }
-
   onProfileIconClick(publicName?:string){
     this.router.navigate(["profile",publicName])
   }
-
 }
-
 export interface UserDocument {
   publicName: string;
   description: string;
+  userId: string;
 }

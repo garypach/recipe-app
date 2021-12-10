@@ -1,3 +1,11 @@
 .action-item {
     margin-left: .5em;
     cursor: pointer;}
+
+    .post-cont{
+        max-width: 500px;
+        & mat-card{
+            background-color: bisque;
+    
+        }
+    }

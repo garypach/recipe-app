@@ -48,5 +48,6 @@ export interface PostData {
   creatorId: string;
   imageUrl: string;
   username:string;
+  postId:string;
 }
 
