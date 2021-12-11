@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
     let isInLikes = false;
     //load likes
     this.firestore.getCollection({
-      path:['Posts',this.postData.postId,"Likes"],
+      path:[this.postData.type,this.postData.postId,"Likes"],
       where:[],
       onComplete:result =>{
         result.docs.forEach(
@@ -38,7 +38,7 @@ export class PostsComponent implements OnInit {
               console.log('included')
               this.firestore.delete(
                 {
-                  path: ['Posts',this.postData.postId,"Likes",likes.likeDocId],
+                  path: [this.postData.type,this.postData.postId,"Likes",likes.likeDocId],
                   onComplete: () => {
                      // Code gets executed when it was successful.
                      alert("Data deleted!");
@@ -53,7 +53,7 @@ export class PostsComponent implements OnInit {
             if(isInLikes === false){
               this.firestore.create(
                 {
-                  path: ["Posts", this.postData.postId, "Likes", likeDocId],
+                  path: [this.postData.type, this.postData.postId, "Likes", likeDocId],
                   data:{
                     creatorId: HeaderComponent.getUserDocument().userId,
                     creatorName:  HeaderComponent.getUserDocument().publicName,

@@ -5,11 +5,11 @@ import { FirebaseTSStorage } from 'firebasets/firebasetsStorage/firebaseTSStorag
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
 import { MatDialogRef } from '@angular/material/dialog';
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.scss']
+  selector: 'app-creat-recipe',
+  templateUrl: './creat-recipe.component.html',
+  styleUrls: ['./creat-recipe.component.scss']
 })
-export class CreatePostComponent implements OnInit {
+export class CreatRecipeComponent implements OnInit {
 
   selectedImageFile?: File;
 
@@ -20,15 +20,16 @@ export class CreatePostComponent implements OnInit {
   userDocument !: UserDocument;
 
 
-  constructor(private dialog: MatDialogRef<CreatePostComponent>) { }
+  constructor(private dialog: MatDialogRef<CreatRecipeComponent>) { }
   ngOnInit(): void {
   }
 
-  onPostClick(commentInput: HTMLTextAreaElement) {
+  onPostClick(commentInput: HTMLTextAreaElement,allergensInput: HTMLTextAreaElement) {
     let comment = commentInput.value;
+    let allergens = allergensInput.value
     if (comment.length <= 0) return;
-    if (this.selectedImageFile) {
-      this.uploadImagePost(comment);
+    if (this.selectedImageFile && allergens != '') {
+      this.uploadImagePost(comment,allergens);
     } else {
       alert('missing elements')
     }
@@ -46,27 +47,28 @@ export class CreatePostComponent implements OnInit {
     );
   }
 
-  uploadImagePost(comment: string) {
+  uploadImagePost(comment: string, allergens:string) {
     this.getUserProfile()
     let postId = this.firestore.genDocId();
     this.storage.upload(
       {
-        uploadName: "upload Image Post",
-        path: ["Posts", postId, "image"],
+        uploadName: "upload Image Recipe",
+        path: ["Recipes", postId, "image"],
         data: {
           data: this.selectedImageFile
         },
         onComplete: (downloadUrl) => {
           this.firestore.create(
             {
-              path: ["Posts", postId],
+              path: ["Recipes", postId],
               data: {
                 comment: comment,
+                allergens:allergens,
                 creatorId: this.auth.getAuth().currentUser!.uid,
                 username: this.userDocument.publicName,
                 imageUrl: downloadUrl,
                 postId: postId,
-                type: "Posts",
+                type:"Recipes",
                 timestamp: FirebaseTSApp.getFirestoreTimestamp()
               },
             }

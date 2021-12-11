@@ -1,26 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { FirebaseTSFirestore, Limit, OrderBy, Where } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
+import { CreatRecipeComponent } from 'src/app/tools/creat-recipe/creat-recipe.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile-feed',
   templateUrl: './profile-feed.component.html',
-  styleUrls: ['./profile-feed.component.scss']
+  styleUrls: ['./profile-feed.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProfileFeedComponent implements OnInit {
   auth = new FirebaseTSAuth();
   firestore = new FirebaseTSFirestore();
   userHasProfile = true;
-  userDocument !: UserDocument;
+  userDocument : UserDocument;
   posts: profilePostData [] = [];
+  recipes: profileRecipeData [] = [];
+
   //check if user is signed in
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.auth.listenToSignInStateChanges(
       user => {
        this.auth.checkSignInState({
          whenSignedIn:user=>{
-          this.getUserProfile()
+          this.getUserProfile();
           this.getPosts();
+          this.getRecipes();
 
          },
          whenSignedOut:user=>{
@@ -36,6 +42,9 @@ export class ProfileFeedComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onCreatePostClick(){
+    this.dialog.open(CreatRecipeComponent);
+  }
   getUserProfile(){
     this.firestore.listenToDocument(
     {
@@ -47,6 +56,30 @@ export class ProfileFeedComponent implements OnInit {
  }
     }
     );}
+    getRecipes(){
+
+      this.firestore.getCollection(
+      {
+      path: ["Recipes"],
+      where: [
+      new Where("creatorId","==",  this.auth.getAuth().currentUser.uid),
+      new OrderBy("timestamp", "desc"),
+      new Limit(10)
+      ],
+      onComplete: (result) => {
+        result.docs.forEach(
+               doc => {
+                 let post = <profileRecipeData>doc.data();
+                 this.recipes.push(post);
+               }
+       );
+   },
+      onFail: err => {
+      }
+      }
+      );}
+      
+
   getPosts(){
 
     this.firestore.getCollection(
@@ -75,6 +108,13 @@ export interface profilePostData {
   creatorId: string;
   imageUrl: string;
   username:string;
+}
+export interface profileRecipeData {
+  comment: string;
+  creatorId: string;
+  imageUrl: string;
+  username:string;
+  allergens:string;
 }
 
 export interface UserDocument {

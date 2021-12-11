@@ -56,9 +56,7 @@ export class HeaderComponent implements OnInit {
       HeaderComponent.userDocument = <UserDocument>result.data();
       this.userHasProfile = result.exists; 
       HeaderComponent.userDocument.userId = this.auth.getAuth().currentUser!.uid
-      if(this.userHasProfile){
-        this.router.navigate(["postfeed"])
-      }
+  
  }
     }
     );}

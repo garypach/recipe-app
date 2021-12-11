@@ -6,7 +6,7 @@ import { profilePostData } from 'src/app/pages/profile-feed/profile-feed.compone
   styleUrls: ['./profile-posts.component.scss']
 })
 export class ProfilePostsComponent implements OnInit {
-  @Input() postData?: profilePostData;
+  @Input() postData: profilePostData;
 
   constructor() { }
 

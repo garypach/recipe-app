@@ -18,8 +18,10 @@ import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { PostsComponent } from './tools/posts/posts.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProfileFeedComponent } from './pages/profile-feed/profile-feed.component';
-import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.component'
-
+import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.component';
+import { CreatRecipeComponent } from './tools/creat-recipe/creat-recipe.component'
+import {MatTabsModule} from '@angular/material/tabs';
+import { ProfileRecipesComponent } from './tools/profile-recipes/profile-recipes.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.compo
     PostsComponent,
     HeaderComponent,
     ProfileFeedComponent,
-    ProfilePostsComponent
+    ProfilePostsComponent,
+    CreatRecipeComponent,
+    ProfileRecipesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.compo
     MatBottomSheetModule,
     MatDialogModule,
     MatIconModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,14 @@
+
 <div>
     {{userDocument?.publicName}}
     {{userDocument?.description}}
 </div>
-<app-profile-posts *ngFor="let post of posts" [postData]="post"></app-profile-posts>
+<div class="text-dark">
+    <mat-tab-group mat-align-tabs="center" color="warn">
+        <mat-tab label="Posts" color="warn">
+            <app-profile-posts *ngFor="let post of posts" [postData]="post"></app-profile-posts>
+        </mat-tab>
+        <mat-tab label="Recipes" color="warn"><app-profile-recipes *ngFor="let recipe of recipes" [recipeData]="recipe"></app-profile-recipes></mat-tab>
+      </mat-tab-group>
+    <button (click)="onCreatePostClick()" mat-fab color="warn" class="post-button"><mat-icon>cake</mat-icon></button>    
+</div>

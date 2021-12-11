@@ -15,11 +15,40 @@ export class PostFeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
+    this.getRecipes();
   }
 
   onCreatePostClick(){
     this.dialog.open(CreatePostComponent);
   }
+  shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  getRecipes(){
+
+    this.firestore.getCollection(
+    {
+    path: ["Recipes"],
+    where: [
+    new OrderBy("timestamp", "desc"),
+    new Limit(10)
+    ],
+    onComplete: (result) => {
+      result.docs.forEach(
+             doc => {
+               let post = <PostData>doc.data();
+               this.posts.push(post);
+             }
+     );
+     this.shuffle(this.posts);
+ },
+    onFail: err => {
+    }
+    }
+    );}
   // get collection of all posts
   getPosts(){
     this.firestore.getCollection(
@@ -49,5 +78,8 @@ export interface PostData {
   imageUrl: string;
   username:string;
   postId:string;
+  allergens:string;
+  type:string;
+
 }
 
