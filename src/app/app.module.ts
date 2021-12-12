@@ -22,6 +22,7 @@ import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.compo
 import { CreatRecipeComponent } from './tools/creat-recipe/creat-recipe.component'
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProfileRecipesComponent } from './tools/profile-recipes/profile-recipes.component'; 
+import {MatMenuModule} from '@angular/material/menu'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { ProfileRecipesComponent } from './tools/profile-recipes/profile-recipes
     MatDialogModule,
     MatIconModule,
     MatTabsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

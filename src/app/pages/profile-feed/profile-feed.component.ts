@@ -108,6 +108,8 @@ export interface profilePostData {
   creatorId: string;
   imageUrl: string;
   username:string;
+  postId:string;
+  type:string;
 }
 export interface profileRecipeData {
   comment: string;
@@ -115,6 +117,8 @@ export interface profileRecipeData {
   imageUrl: string;
   username:string;
   allergens:string;
+  postId:string;
+  type:string;
 }
 
 export interface UserDocument {

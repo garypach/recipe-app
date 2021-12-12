@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
-import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +35,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  //allow access to userdocument across entire code
   public static getUserDocument(){
     return HomeComponent.userDocument;
   }

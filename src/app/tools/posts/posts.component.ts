@@ -96,10 +96,10 @@ export class PostsComponent implements OnInit {
   }
   getCreatorInfo(){
     this.firestore.getDocument({
-      path:['Users',this.postData!.creatorId],
+      path:['Users',this.postData.creatorId],
       onComplete:result =>{
         let userDocument = result.data();
-        this.creatorName = userDocument!.publicName;
+        this.creatorName = userDocument.publicName;
 
       }
     })

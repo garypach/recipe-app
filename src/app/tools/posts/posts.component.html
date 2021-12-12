@@ -11,6 +11,9 @@
   <mat-card-content class="text-dark">
     {{postData?.comment}}
   </mat-card-content>
+  <mat-card-content *ngIf="postData.allergens" class="text-dark">
+    {{postData?.allergens}}
+  </mat-card-content>
 <mat-card-actions>
   <mat-icon class="action-item" color="warn" (click)="onLikeClick()">favorite_border</mat-icon>
 
