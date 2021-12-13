@@ -3,6 +3,8 @@ import { FirebaseTSFirestore, Limit, OrderBy, Where } from 'firebasets/firebaset
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { CreatRecipeComponent } from 'src/app/tools/creat-recipe/creat-recipe.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateusernameComponent } from 'src/app/tools/updateusername/updateusername.component';
+import { UpdatedescriptionComponent } from 'src/app/tools/updatedescription/updatedescription.component';
 
 @Component({
   selector: 'app-profile-feed',
@@ -45,6 +47,13 @@ export class ProfileFeedComponent implements OnInit {
   onCreatePostClick(){
     this.dialog.open(CreatRecipeComponent);
   }
+  onOpenNewUserNameClick(){
+    this.dialog.open(UpdateusernameComponent);
+  }
+  onOpenNewDescriptionClick(){
+    this.dialog.open(UpdatedescriptionComponent);
+  }
+
   getUserProfile(){
     this.firestore.listenToDocument(
     {
@@ -56,6 +65,7 @@ export class ProfileFeedComponent implements OnInit {
  }
     }
     );}
+    
     getRecipes(){
 
       this.firestore.getCollection(

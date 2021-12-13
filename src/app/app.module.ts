@@ -22,7 +22,9 @@ import { ProfilePostsComponent } from './tools/profile-posts/profile-posts.compo
 import { CreatRecipeComponent } from './tools/creat-recipe/creat-recipe.component'
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProfileRecipesComponent } from './tools/profile-recipes/profile-recipes.component'; 
-import {MatMenuModule} from '@angular/material/menu'; 
+import {MatMenuModule} from '@angular/material/menu';
+import { UpdateusernameComponent } from './tools/updateusername/updateusername.component';
+import { UpdatedescriptionComponent } from './tools/updatedescription/updatedescription.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import {MatMenuModule} from '@angular/material/menu';
     ProfileFeedComponent,
     ProfilePostsComponent,
     CreatRecipeComponent,
-    ProfileRecipesComponent
+    ProfileRecipesComponent,
+    UpdateusernameComponent,
+    UpdatedescriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,20 @@
-<div class="container d-flex" *ngIf="loggedIn()">
-    <div>
+<div class="container d-flex justify-content-around mt-5 " *ngIf="loggedIn() ">
+    <div class="">
         <a href="/" class="align-items-center justify-content-center text-black text-decoration-none">
             <span class="fs-4 p-4 mt-5 fw-bold">Foodie</span>
           </a>
     </div>
-    <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items" >
-        Hello, {{ getUsername()}}
-</div>
-    <mat-icon (click)=" onProfileIconClick( getUsername())">account_circle</mat-icon>
-    
-    <div *ngIf="loggedIn()"
-          (click)="onLogoutClick()" class="nav-bar-items" >
-           Logout
-    </div>    
+    <div class=" d-flex text-center">
+        <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items text-capitalize me-1" >
+            Hello, {{ getUsername()}}
+    </div>
+        <mat-icon class="me-3 logout" (click)=" onProfileIconClick( getUsername())">account_circle</mat-icon>
+        
+        <div *ngIf="loggedIn()"
+              (click)="onLogoutClick()" class="nav-bar-items logout" >
+               Logout
+        </div> 
+    </div>
+      
 </div>
 

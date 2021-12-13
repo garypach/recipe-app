@@ -1,17 +1,17 @@
 <mat-card>
     <mat-card-header>
-      <mat-card-title>Create Post</mat-card-title>
+      <mat-card-title class="text-dark pt-3 pb-3 border-bottom border-light">Create Recipe</mat-card-title>
     </mat-card-header>
-    <div *ngIf="selectedImageFile"  id="post-preview">
+    <div *ngIf="selectedImageFile"  id="post-preview"class="mb-5">
       <img id="post-preview-image" />
     </div>
-    <div>
-      <textarea #commentInput placeholder="Type Message..."></textarea>
+    <div class="recipe-text">
+      <textarea #commentInput placeholder="Recipe..."></textarea>
     </div>
-    <div>
-        <textarea #allergensInput placeholder="Type Message..."></textarea>
+    <div class="allergen-text">
+        <textarea #allergensInput placeholder="Allergens..."></textarea>
       </div>
-    <mat-card-actions align="end">
+    <mat-card-actions align="end" class="p-3">
       <button mat-button color="warn">
         <label for="photo-upload">
           <input

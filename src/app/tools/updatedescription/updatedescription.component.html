@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title class="text-dark pt-3 pb-3 border-bottom border-light">Update Description</mat-card-title>
+    </mat-card-header>
+    <div>
+      <textarea #commentInput placeholder="New Description..."></textarea>
+    </div>
+    <mat-card-actions align="end" class="p-3">
+      <button (click)="onUpdateDescriptionClick(commentInput)" mat-flat-button color="warn">Update</button>
+    </mat-card-actions>
+  </mat-card>
+  

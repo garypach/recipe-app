@@ -1,0 +1,15 @@
+input, textarea{
+    width:100%;
+    resize: none;
+    padding: 1em;
+    border-radius: 1em;
+    outline: none;
+    margin-bottom: 1em;
+}
+::ng-deep .mat-dialog-container{
+    background-color: white !important;
+    min-width:350px;
+   }
+   ::ng-deep .mat-card{
+     background-color: bisque;
+   }

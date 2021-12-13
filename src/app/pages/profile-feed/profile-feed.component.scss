@@ -3,15 +3,25 @@
     min-width: 25px !important;
     background-color: transparent;
     font-weight: 700;
-    color: black;
+    color: white;
     margin: 0 10px;
 }
-
+.post-cont{
+    position: relative;
+    max-width: 500px;
+}
 /* Styles for the active tab label */
 .mat-tab-label.mat-tab-label-active {
     min-width: 25px !important;
     background-color: transparent;
     font-weight: 700;
-    color: #f44336;
+    color: white;
 
 }
+.post-button{
+    position: fixed !important;
+    bottom:0%;
+    z-index: 9;
+    right: 20%;
+}
+
